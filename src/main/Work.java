@@ -18,6 +18,11 @@ public class Work {
         addIfMax addifmax = new addIfMax();
         clear clean = new clear();
         countLessThanMinimalPoint cltmp = new countLessThanMinimalPoint();
+        removeById rbi = new removeById();
+        removeLower rl = new removeLower();
+        updateId updId = new updateId();
+        info inf = new info();
+        history hst = new history();
 
         while (true){
             Scanner scanner = new Scanner(System.in);
@@ -31,12 +36,12 @@ public class Work {
                 case "exit": System.exit(0);
                 case "filter_by_minimal_point": h.Help();break; //TODO
                 case "filter_less_than_personal_qualities_minimum": h.Help();break; //TODO
-                case "history": h.Help();break; //TODO
-                case "info": h.Help();break; //TODO
-                case "remove_by_id": h.Help();break; //TODO
-                case "remove_lower": h.Help();break; //TODO
+                case "history": hst.getHistory();break; //TODO
+                case "info": inf.getInfo();break;
+                case "remove_by_id": rbi.removing();break;
+                case "remove_lower": rl.compare();break;
                 case "show": System.out.println(h.Help());break; //TODO
-                case "update_id": h.Help();break; //TODO
+                case "update_id": updId.update();break; //DO
             }
         }
 

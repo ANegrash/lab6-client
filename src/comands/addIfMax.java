@@ -122,6 +122,7 @@ public class addIfMax {
             LabWork lw = new LabWork(1, nameEnter, new Coordinates(xEnter, yEnter), creationDate, minimalPointEnter, personalQalityEnter, dificultyEnter, new Person(authornameEnter, birthday, heightEnter, nationEnter));
 
             connect.sendObj(lw);
+            connect.waitForResponse();
 
         }
 
