@@ -8,6 +8,5 @@ public class info {
     Connect connect = new Connect();
     public void getInfo() throws IOException {
         connect.sendComand("info");
-        connect.waitForResponse();
     }
 }

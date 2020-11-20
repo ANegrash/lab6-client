@@ -21,7 +21,7 @@ public class addIfMax {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     Connect connect = new Connect();
     public void compare() throws IOException {
-            System.out.println("Добавление нового элемента в коллекцию:");
+            System.out.println("");
             connect.sendComand("add_if_max");
             System.out.println("Введите имя:");
             while(nameEnter.isEmpty()){
@@ -122,7 +122,6 @@ public class addIfMax {
             LabWork lw = new LabWork(1, nameEnter, new Coordinates(xEnter, yEnter), creationDate, minimalPointEnter, personalQalityEnter, dificultyEnter, new Person(authornameEnter, birthday, heightEnter, nationEnter));
 
             connect.sendObj(lw);
-            connect.waitForResponse();
 
         }
 

@@ -23,12 +23,13 @@ public class Work {
         updateId updId = new updateId();
         info inf = new info();
         history hst = new history();
+        show sh = new show();
 
         while (true){
             Scanner scanner = new Scanner(System.in);
             String comand = scanner.nextLine();
             switch (comand){
-                case "help": System.out.println(h.Help());break;
+                case "help": h.Help();break;
                 case "add": add.insertData();break;
                 case "add_if_max": addifmax.compare();break;
                 case "clear": clean.doClean();break;
@@ -40,8 +41,9 @@ public class Work {
                 case "info": inf.getInfo();break;
                 case "remove_by_id": rbi.removing();break;
                 case "remove_lower": rl.compare();break;
-                case "show": System.out.println(h.Help());break; //TODO
+                case "show": sh.showCollection();break; //TODO
                 case "update_id": updId.update();break; //DO
+                default:connect.sendComand(comand);break;
             }
         }
 

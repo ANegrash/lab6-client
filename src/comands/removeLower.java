@@ -21,7 +21,6 @@ public class removeLower {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     Connect connect = new Connect();
     public void compare() throws IOException {
-        System.out.println("Введите значения элемента коллекции для сравнения:");
         connect.sendComand("remove_lower");
         System.out.println("Введите имя:");
         while(nameEnter.isEmpty()){
@@ -123,7 +122,6 @@ public class removeLower {
 
         connect.sendObj(lw);
 
-        connect.waitForResponse();
 
     }
 

@@ -26,7 +26,6 @@ public class addElement {
     Connect connect = new Connect();
 
     public void insertData() throws IOException {
-        System.out.println("Добавление нового элемента в коллекцию:");
         connect.sendComand("add");
         System.out.println("Введите имя:");
         while(nameEnter.isEmpty()){
