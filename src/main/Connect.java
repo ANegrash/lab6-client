@@ -1,6 +1,7 @@
 package main;
 
 import collectionClasses.LabWork;
+import comands.updateId;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -11,7 +12,7 @@ import java.nio.channels.DatagramChannel;
 
 public class Connect {
     private static final int BUFFER_SIZE = 10000;
-    int port = 13, port2 = 12;
+    int port = 11, port2 = 12;
     InetSocketAddress myAddress, address;
     DatagramChannel datagramChannel;
     DatagramSocket c;
@@ -55,6 +56,7 @@ public class Connect {
     }
 
     public void sendIdToRemove(int idToRem) throws IOException {
+        updateId uid = new updateId();
         InetAddress hostIP = InetAddress.getLocalHost();
         myAddress = new InetSocketAddress(hostIP, port);
         datagramChannel = DatagramChannel.open();
@@ -75,6 +77,7 @@ public class Connect {
         String data = new String(buffer42.array(), "UTF-8");
         System.out.println(data);
         datagramSocket.close();
+        if (data.contains("Ошибка")) uid.vybor(true); else uid.vybor(false);
     }
 
     public void sendPQMToFilter(double idTofilter) throws IOException {
