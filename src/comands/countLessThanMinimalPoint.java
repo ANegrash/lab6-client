@@ -11,8 +11,8 @@ public class countLessThanMinimalPoint {
 
     public void counting() throws IOException {
         connect.sendComand("count_less_than_minimal_point");
+        minimalPointEnter=-1;
 
-        System.out.println("Введите значение Minimal Point для сравнения (тип Float, больше или равно 0):");
         while(minimalPointEnter<0){
             minimalPointEnter=Float.parseFloat(Scan("float"));
         }

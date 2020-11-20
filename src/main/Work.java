@@ -24,6 +24,8 @@ public class Work {
         info inf = new info();
         history hst = new history();
         show sh = new show();
+        filterByMinimalPoint fbm=new filterByMinimalPoint();
+        filterLessThanPersonalQualitiesMinimum flt = new filterLessThanPersonalQualitiesMinimum();
 
         while (true){
             Scanner scanner = new Scanner(System.in);
@@ -35,14 +37,14 @@ public class Work {
                 case "clear": clean.doClean();break;
                 case "count_less_than_minimal_point": cltmp.counting();break;
                 case "exit": System.exit(0);
-                case "filter_by_minimal_point": h.Help();break; //TODO
-                case "filter_less_than_personal_qualities_minimum": h.Help();break; //TODO
-                case "history": hst.getHistory();break; //TODO
+                case "filter_by_minimal_point": fbm.doFilter();break;
+                case "filter_less_than_personal_qualities_minimum": flt.doFilter();break;
+                case "history": hst.getHistory();break;
                 case "info": inf.getInfo();break;
                 case "remove_by_id": rbi.removing();break;
                 case "remove_lower": rl.compare();break;
-                case "show": sh.showCollection();break; //TODO
-                case "update_id": updId.update();break; //DO
+                case "show": sh.showCollection();break;
+                case "update_id": updId.update();break;
                 default:connect.sendComand(comand);break;
             }
         }

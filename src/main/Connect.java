@@ -10,7 +10,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
 
 public class Connect {
-    private static final int BUFFER_SIZE = 1024;
+    private static final int BUFFER_SIZE = 10000;
     int port = 13, port2 = 12;
     InetSocketAddress myAddress, address;
     DatagramChannel datagramChannel;
@@ -33,26 +33,71 @@ public class Connect {
         InetAddress hostIP = InetAddress.getLocalHost();
         myAddress = new InetSocketAddress(hostIP, port);
         datagramChannel = DatagramChannel.open();
-        datagramChannel.connect(myAddress);
+        //datagramChannel.bind(myAddress);
+        String minP = ""+minPoint;
+        ByteBuffer buffer42 = ByteBuffer.allocate(BUFFER_SIZE);
+        byte[] bb = minP.getBytes();
 
-        ByteBuffer buffer = ByteBuffer.allocate(BUFFER_SIZE);
-        buffer.asFloatBuffer().put(minPoint);
-        buffer.flip();
-        datagramChannel.send(buffer, myAddress);
-        buffer.clear();
+        buffer42.put(bb);
+        buffer42.flip();
+        datagramChannel.send(buffer42, myAddress);
+        buffer42.clear();
+
+        InetSocketAddress address = new InetSocketAddress(hostIP, port2);
+        DatagramChannel datagramChannel2 = DatagramChannel.open();
+        DatagramSocket datagramSocket = datagramChannel2.socket();
+        datagramSocket.bind(address);
+
+        datagramChannel2.receive(buffer42);
+        String data = new String(buffer42.array(), "UTF-8");
+        System.out.println(data);
+        datagramSocket.close();
     }
 
     public void sendIdToRemove(int idToRem) throws IOException {
         InetAddress hostIP = InetAddress.getLocalHost();
         myAddress = new InetSocketAddress(hostIP, port);
         datagramChannel = DatagramChannel.open();
-        datagramChannel.connect(myAddress);
+        //datagramChannel.bind(myAddress);
+        ByteBuffer buffer42 = ByteBuffer.allocate(BUFFER_SIZE);
 
-        ByteBuffer buffer2 = ByteBuffer.allocate(BUFFER_SIZE);
-        buffer2.putInt(idToRem);
-        buffer2.flip();
-        datagramChannel.send(buffer2, myAddress);
-        buffer2.clear();
+        buffer42.putInt(idToRem);
+        buffer42.flip();
+        datagramChannel.send(buffer42, myAddress);
+        buffer42.clear();
+
+        InetSocketAddress address = new InetSocketAddress(hostIP, port2);
+        DatagramChannel datagramChannel2 = DatagramChannel.open();
+        DatagramSocket datagramSocket = datagramChannel2.socket();
+        datagramSocket.bind(address);
+
+        datagramChannel2.receive(buffer42);
+        String data = new String(buffer42.array(), "UTF-8");
+        System.out.println(data);
+        datagramSocket.close();
+    }
+
+    public void sendPQMToFilter(double idTofilter) throws IOException {
+        InetAddress hostIP = InetAddress.getLocalHost();
+        myAddress = new InetSocketAddress(hostIP, port);
+        datagramChannel = DatagramChannel.open();
+        //datagramChannel.bind(myAddress);
+        ByteBuffer buffer42 = ByteBuffer.allocate(BUFFER_SIZE);
+
+        buffer42.putDouble(idTofilter);
+        buffer42.flip();
+        datagramChannel.send(buffer42, myAddress);
+        buffer42.clear();
+
+        InetSocketAddress address = new InetSocketAddress(hostIP, port2);
+        DatagramChannel datagramChannel2 = DatagramChannel.open();
+        DatagramSocket datagramSocket = datagramChannel2.socket();
+        datagramSocket.bind(address);
+
+        datagramChannel2.receive(buffer42);
+        String data = new String(buffer42.array(), "UTF-8");
+        System.out.println(data);
+        datagramSocket.close();
     }
 
     public void sendComand(String comand) throws IOException {

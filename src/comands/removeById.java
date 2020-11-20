@@ -11,8 +11,7 @@ public class removeById {
 
     public void removing() throws IOException {
         connect.sendComand("remove_by_id");
-
-        System.out.println("Введите id элемента, который нужно удалить (целое число, больше 0):");
+        idToRemove=0;
         while(idToRemove<=0){
             idToRemove=Integer.parseInt(Scan("int"));
         }
