@@ -12,7 +12,7 @@ import java.nio.channels.DatagramChannel;
 
 public class Connect {
     private static final int BUFFER_SIZE = 10000;
-    int port = 11, port2 = 12;
+    int port = 1111, port2 = 1211;
     InetSocketAddress myAddress, address;
     DatagramChannel datagramChannel;
     DatagramSocket c;
@@ -24,7 +24,7 @@ public class Connect {
 
 
     public void connectServer() throws IOException {
-        a = new InetSocketAddress(InetAddress.getLocalHost(), 8888);
+        a = new InetSocketAddress(InetAddress.getByName("se.ifmo.ru"), 8888);
         s = new DatagramSocket();
 
 
